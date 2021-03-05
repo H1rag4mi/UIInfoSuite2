@@ -39,6 +39,5 @@
 	"LuckStatus3": "Tu te sens chanceux... mais pas trop", // TODO
 	"LuckStatus4": "Tu te sens chanceux... mais pas trop", // TODO
 	"LuckStatus5": "Tu ne te sens pas tu tout chanceux...", // TODO
-	"LuckStatus6": "Tu ferais mieux de rester à la maison aujourd'hui",
-	"RobinBuildingStatus": "Robin will finish your new building in {0} day(s)" // TODO
+	"LuckStatus6": "Tu ferais mieux de rester à la maison aujourd'hui"
 }

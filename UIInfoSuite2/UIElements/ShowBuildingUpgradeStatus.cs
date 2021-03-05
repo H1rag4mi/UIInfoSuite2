@@ -11,7 +11,7 @@ using StardewValley.Buildings;
 
 namespace UIInfoSuite.UIElements
 {
-    class ShowRobinBuildingStatusIcon : IDisposable
+    class ShowBuildingUpgradeStatus : IDisposable
     {
         #region Properties
 
@@ -25,7 +25,7 @@ namespace UIInfoSuite.UIElements
         #endregion
 
         #region Lifecycle
-        public ShowRobinBuildingStatusIcon(IModHelper helper)
+        public ShowBuildingUpgradeStatus(IModHelper helper)
         {
             _helper = helper;
         }
@@ -45,7 +45,7 @@ namespace UIInfoSuite.UIElements
             if (showRobinBuildingStatus)
             {
                 FindRobinSpritesheet();
-                UpdateRobinBuindingStatusData();
+                UpdateBuildingInfo();
 
                 _helper.Events.GameLoop.DayStarted += OnDayStarted;
                 _helper.Events.Display.RenderingHud += OnRenderingHud;
@@ -57,7 +57,7 @@ namespace UIInfoSuite.UIElements
         #region Event subscriptions
         private void OnDayStarted(object sender, DayStartedEventArgs e)
         {
-            UpdateRobinBuindingStatusData();
+            UpdateBuildingInfo();
         }
 
         private void OnRenderingHud(object sender, RenderingHudEventArgs e)
@@ -91,14 +91,16 @@ namespace UIInfoSuite.UIElements
         #endregion
 
         #region Logic
-        private void UpdateRobinBuindingStatusData()
+        private void UpdateBuildingInfo()
         {
             _IsBuildingInProgress = Game1.getFarm().isThereABuildingUnderConstruction();
 
             if (_IsBuildingInProgress)
             {
                 Building buildingUnderConstruction = Game1.getFarm().getBuildingUnderConstruction();
-                _hoverText = String.Format(_helper.SafeGetString(LanguageKeys.RobinBuildingStatus), buildingUnderConstruction.daysOfConstructionLeft.Value > 0 ? buildingUnderConstruction.daysOfConstructionLeft.Value : buildingUnderConstruction.daysUntilUpgrade.Value);
+                bool isConstruction = buildingUnderConstruction.daysOfConstructionLeft.Value > 0;
+                string.Format(_helper.SafeGetString(isConstruction ? LanguageKeys.DaysUntilBuildingIsConstructed : LanguageKeys.DaysUntilBuildingIsUpgraded),
+                    isConstruction ? buildingUnderConstruction.daysOfConstructionLeft.Value : buildingUnderConstruction.daysUntilUpgrade.Value, buildingUnderConstruction.buildingType.Value);
             }
             else
             {

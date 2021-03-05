@@ -83,6 +83,7 @@
     <Compile Include="Options\ModOptionsElement.cs" />
     <Compile Include="Options\ModOptionsPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIElements\ShowBuildingUpgradeStatus.cs" />
     <Compile Include="UIElements\ExperienceBar.cs" />
     <Compile Include="UIElements\ExperiencePointDisplay.cs" />
     <Compile Include="UIElements\LocationOfTownsfolk.cs" />
@@ -95,7 +96,6 @@
     <Compile Include="UIElements\ShowItemHoverInformation.cs" />
     <Compile Include="UIElements\ShowItemEffectRanges.cs" />
     <Compile Include="UIElements\ShowQueenOfSauceIcon.cs" />
-    <Compile Include="UIElements\ShowRobinBuildingStatusIcon.cs" />
     <Compile Include="UIElements\ShowRainyDayIcon.cs" />
     <Compile Include="UIElements\ShowToolUpgradeStatus.cs" />
     <Compile Include="UIElements\ShowTravelingMerchant.cs" />

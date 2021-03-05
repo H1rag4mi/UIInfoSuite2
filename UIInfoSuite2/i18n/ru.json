@@ -43,6 +43,5 @@
     "LuckStatus3": "Вы ощущаете, что сегодня, вроде бы, вам повезёт.", // TODO
     "LuckStatus4": "Вы ощущаете, что сегодня, вроде бы, вам повезёт.", // TODO
     "LuckStatus5": "Сегодня вам совсем не везёт...", // TODO
-    "LuckStatus6": "Может быть, вам стоит сегодня остаться дома...",
-    "RobinBuildingStatus": "Robin will finish your new building in {0} day(s)" // TODO
+    "LuckStatus6": "Может быть, вам стоит сегодня остаться дома..."
 }

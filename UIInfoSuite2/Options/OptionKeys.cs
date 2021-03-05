@@ -23,8 +23,8 @@
         public const string DisplayCalendarAndBillboard = "DisplayCalendarAndBillboard";
         public const string ShowWhenNewRecipesAreAvailable = "ShowWhenNewRecipesAreAvailable";
         public const string ShowToolUpgradeStatus = "ShowToolUpgradeStatus";
+        public const string ShowBuildingUpgradeStatus = "ShowBuildingUpgradeStatus";
         public const string HideMerchantWhenVisited = "HideMerchantWhenVisited";
         public const string ShowExactValue = "ShowExactValue";
-        public const string ShowRobinBuildingStatusIcon = "ShowRobinBuildingStatusIcon";
     }
 }

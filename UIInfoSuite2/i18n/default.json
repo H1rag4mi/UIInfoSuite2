@@ -19,6 +19,8 @@
     "SnowNextDay": "There will be snow tomorrow",
     "DaysUntilToolIsUpgraded": "{0} days until {1} is finished being upgraded",
     "ToolIsFinishedBeingUpgraded": "{0} is finished!",
+    "DaysUntilBuildingIsUpgraded": "{0} days until {1} is finished being upgraded",
+    "DaysUntilBuildingIsConstructed": "{0} days until {1} is finished being built",
     "ShowLuckIcon": "Show luck icon",
     "ShowLevelUpAnimation": "Show level up animation",
     "ShowExperienceBar": "Show experience bar",
@@ -37,6 +39,7 @@
     "ShowHarvestPricesInShop": "Show shop harvest prices",
     "ShowWhenNewRecipesAreAvailable": "Show when new recipes are available",
     "ShowToolUpgradeStatus": "Show tool upgrade status",
+    "ShowBuildingUpgradeStatus": "Show building contruction/upgrade status",
     "HideAnimalPetOnMaxFriendship": "Hide on max friendship",
     "HideMerchantWhenVisited": "Hide when visited",
     "ShowExactValue": "Show exact value",
@@ -46,7 +49,5 @@
     "LuckStatus3": "The day is in your hands",
     "LuckStatus4": "The spirits feel absolutely neutral today",
     "LuckStatus5": "Luck will not be on your side today",
-    "LuckStatus6": "Maybe you should stay home today...",
-    "ShowRobinBuildingStatusIcon": "Show Robin building status",
-    "RobinBuildingStatus": "Robin will finish your new building in {0} day(s)"
+    "LuckStatus6": "Maybe you should stay home today..."
 }

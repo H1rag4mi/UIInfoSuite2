@@ -36,6 +36,5 @@
 	"LuckStatus3": "รู้สึก 'โชคดี ... แต่ไม่โชคดีเกินไป", // TODO
 	"LuckStatus4": "รู้สึก 'โชคดี ... แต่ไม่โชคดีเกินไป", // TODO
 	"LuckStatus5": "วันนี้คุณไม่รู้สึกโชคดีเลย", // TODO
-	"LuckStatus6": "บางทีคุณควรจะอยู่บ้านวันนี้ ...",
-	"RobinBuildingStatus": "Robin will finish your new building in {0} day(s)" // TODO
+	"LuckStatus6": "บางทีคุณควรจะอยู่บ้านวันนี้ ..."
 }

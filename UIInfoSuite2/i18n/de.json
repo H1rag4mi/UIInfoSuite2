@@ -43,6 +43,5 @@
     "LuckStatus3": "Du fühlst dich glücklich ... aber nicht zu glücklich", // TODO
     "LuckStatus4": "Du fühlst dich glücklich ... aber nicht zu glücklich", // TODO
     "LuckStatus5": "Du fühlst dich heute gar nicht glücklich", // TODO
-    "LuckStatus6": "Vielleicht solltest du heute zu Hause bleiben",
-    "RobinBuildingStatus": "Robin will finish your new building in {0} day(s)" // TODO
+    "LuckStatus6": "Vielleicht solltest du heute zu Hause bleiben"
 }

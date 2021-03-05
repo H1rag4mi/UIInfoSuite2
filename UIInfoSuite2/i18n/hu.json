@@ -38,6 +38,5 @@
     "LuckStatus3": "Szerencs�snek �rzed magad... de nem nagyon.", // TODO
     "LuckStatus4": "Szerencs�snek �rzed magad... de nem nagyon.", // TODO
     "LuckStatus5": "Egy�ltal�n nem �rzed szerencs�snek magad...", // TODO
-    "LuckStatus6": "Tal�n ma otthon k�ne maradnod...",
-    "RobinBuildingStatus": "Robin will finish your new building in {0} day(s)" // TODO
+    "LuckStatus6": "Tal�n ma otthon k�ne maradnod..."
 }
