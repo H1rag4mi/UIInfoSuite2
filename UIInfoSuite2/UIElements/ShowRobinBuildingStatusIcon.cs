@@ -16,7 +16,7 @@ namespace UIInfoSuite.UIElements
         #region Properties
 
         private bool _IsBuildingInProgress;
-        Rectangle? _buildingIconSpriteLocation;
+        Rectangle _buildingIconSpriteLocation = new Rectangle(0, 4, 15, 15);
         private string _hoverText;
         private ClickableTextureComponent _buildingIcon;
         private Texture2D _robinIconSheet;
@@ -33,6 +33,7 @@ namespace UIInfoSuite.UIElements
         public void Dispose()
         {
             ToggleOption(false);
+            _IsBuildingInProgress = false;
         }
 
         public void ToggleOption(bool showRobinBuildingStatus)
@@ -43,6 +44,7 @@ namespace UIInfoSuite.UIElements
 
             if (showRobinBuildingStatus)
             {
+                FindRobinSpritesheet();
                 UpdateRobinBuindingStatusData();
 
                 _helper.Events.GameLoop.DayStarted += OnDayStarted;
@@ -61,14 +63,14 @@ namespace UIInfoSuite.UIElements
         private void OnRenderingHud(object sender, RenderingHudEventArgs e)
         {
             // Draw icon
-            if (!Game1.eventUp && _IsBuildingInProgress && _buildingIconSpriteLocation.HasValue)
+            if (!Game1.eventUp && _IsBuildingInProgress)
             {
                 Point iconPosition = IconHandler.Handler.GetNewIconPosition();
                 _buildingIcon =
                     new ClickableTextureComponent(
                         new Rectangle(iconPosition.X, iconPosition.Y, 40, 40),
                         _robinIconSheet,
-                        _buildingIconSpriteLocation.Value,
+                        _buildingIconSpriteLocation,
                         8 / 3f);
                 _buildingIcon.draw(Game1.spriteBatch);
             }
@@ -91,39 +93,23 @@ namespace UIInfoSuite.UIElements
         #region Logic
         private void UpdateRobinBuindingStatusData()
         {
-            Building buildingUnderConstruction = Game1.getFarm().getBuildingUnderConstruction();
-            if (buildingUnderConstruction is null)
+            _IsBuildingInProgress = Game1.getFarm().isThereABuildingUnderConstruction();
+
+            if (_IsBuildingInProgress)
             {
-                _IsBuildingInProgress = false;
-                _hoverText = String.Empty;
-            } 
+                Building buildingUnderConstruction = Game1.getFarm().getBuildingUnderConstruction();
+                _hoverText = String.Format(_helper.SafeGetString(LanguageKeys.RobinBuildingStatus), buildingUnderConstruction.daysOfConstructionLeft.Value > 0 ? buildingUnderConstruction.daysOfConstructionLeft.Value : buildingUnderConstruction.daysUntilUpgrade.Value);
+            }
             else
             {
-                _IsBuildingInProgress = true;
-                _hoverText = String.Format(_helper.SafeGetString(LanguageKeys.RobinBuildingStatus), buildingUnderConstruction.daysOfConstructionLeft.Value > 0 ? buildingUnderConstruction.daysOfConstructionLeft.Value : buildingUnderConstruction.daysUntilUpgrade.Value);
-
-                FindRobinSpritesheet();
+                _hoverText = String.Empty;
             }
         }
 
         private void FindRobinSpritesheet()
         {
-            foreach (var location in Game1.locations)
-            {
-                foreach (var character in location.characters)
-                {
-                    if (character.Name == "Robin")
-                    {
-                        _robinIconSheet = character.Sprite.Texture;
-                        break;
-                    }
-                }
-
-                if (_robinIconSheet != null)
-                    break;
-            }
-
-            _buildingIconSpriteLocation = new Rectangle(0, 195 + 1, 15, 15 - 1);    // 1px edits for better alignment with other icons
+            NPC robin = Game1.getCharacterFromName<NPC>("Robin");
+            _robinIconSheet = robin.Sprite.Texture;
         }
         #endregion
     }
