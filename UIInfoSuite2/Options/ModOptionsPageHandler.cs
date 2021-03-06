@@ -83,34 +83,32 @@ namespace UIInfoSuite.Options
             Version thisVersion = Assembly.GetAssembly(this.GetType()).GetName().Version;
             _optionsElements.Add(new ModOptionsElement("UI Info Suite 2 v" + thisVersion.Major + "." + thisVersion.Minor + "." + thisVersion.Build));
 
-            var luckIcon = new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowLuckIcon), whichOption++, _luckOfDay.ToggleOption, _options, OptionKeys.ShowLuckIcon);
+            var luckIcon = new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowLuckIcon), whichOption++, _luckOfDay.ToggleOption, _options, OptionKeys.ShowLuckIcon, null, ModEntry.Instance.Config.ShowLuckIcon);
             _optionsElements.Add(luckIcon);
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowExactValue), whichOption++, _luckOfDay.ToggleShowExactValueOption, _options, OptionKeys.ShowExactValue, luckIcon, false));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowLevelUpAnimation), whichOption++, _experienceBar.ToggleLevelUpAnimation, _options, OptionKeys.ShowLevelUpAnimation));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowExperienceBar), whichOption++, _experienceBar.ToggleShowExperienceBar, _options, OptionKeys.ShowExperienceBar));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.AllowExperienceBarToFadeOut), whichOption++, _experienceBar.ToggleExperienceBarFade, _options, OptionKeys.AllowExperienceBarToFadeOut));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowExperienceGain), whichOption++, _experienceBar.ToggleShowExperienceGain, _options, OptionKeys.ShowExperienceGain));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowLocationOfTownsPeople), whichOption++, _locationOfTownsfolk.ToggleShowNPCLocationsOnMap, _options, OptionKeys.ShowLocationOfTownsPeople));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowBirthdayIcon), whichOption++, _showBirthdayIcon.ToggleOption, _options, OptionKeys.ShowBirthdayIcon));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowHeartFills), whichOption++, _showAccurateHearts.ToggleOption, _options, OptionKeys.ShowHeartFills));
-            var animalPetIcon = new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowAnimalsNeedPets), whichOption++, _showWhenAnimalNeedsPet.ToggleOption, _options, OptionKeys.ShowAnimalsNeedPets);
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowExactValue), whichOption++, _luckOfDay.ToggleShowExactValueOption, _options, OptionKeys.ShowExactValue, luckIcon, ModEntry.Instance.Config.ShowExactValue));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowLevelUpAnimation), whichOption++, _experienceBar.ToggleLevelUpAnimation, _options, OptionKeys.ShowLevelUpAnimation, null, ModEntry.Instance.Config.ShowLevelUpAnimation));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowExperienceBar), whichOption++, _experienceBar.ToggleShowExperienceBar, _options, OptionKeys.ShowExperienceBar, null, ModEntry.Instance.Config.ShowExperienceBar));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.AllowExperienceBarToFadeOut), whichOption++, _experienceBar.ToggleExperienceBarFade, _options, OptionKeys.AllowExperienceBarToFadeOut, null, ModEntry.Instance.Config.AllowExperienceBarToFadeOut));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowExperienceGain), whichOption++, _experienceBar.ToggleShowExperienceGain, _options, OptionKeys.ShowExperienceGain, null, ModEntry.Instance.Config.ShowExperienceGain));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowLocationOfTownsPeople), whichOption++, _locationOfTownsfolk.ToggleShowNPCLocationsOnMap, _options, OptionKeys.ShowLocationOfTownsPeople, null, ModEntry.Instance.Config.ShowLocationOfTownsPeople));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowBirthdayIcon), whichOption++, _showBirthdayIcon.ToggleOption, _options, OptionKeys.ShowBirthdayIcon, null, ModEntry.Instance.Config.ShowBirthdayIcon));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowHeartFills), whichOption++, _showAccurateHearts.ToggleOption, _options, OptionKeys.ShowHeartFills, null, ModEntry.Instance.Config.ShowHeartFills));
+            var animalPetIcon = new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowAnimalsNeedPets), whichOption++, _showWhenAnimalNeedsPet.ToggleOption, _options, OptionKeys.ShowAnimalsNeedPets, null, ModEntry.Instance.Config.ShowAnimalsNeedPets);
             _optionsElements.Add(animalPetIcon);
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.HideAnimalPetOnMaxFriendship), whichOption++, _showWhenAnimalNeedsPet.ToggleDisableOnMaxFirendshipOption, _options, OptionKeys.HideAnimalPetOnMaxFriendship, animalPetIcon));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.DisplayCalendarAndBillboard), whichOption++, _showCalendarAndBillboardOnGameMenuButton.ToggleOption, _options, OptionKeys.DisplayCalendarAndBillboard));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowCropAndBarrelTooltip), whichOption++, _showCropAndBarrelTime.ToggleOption, _options, OptionKeys.ShowCropAndBarrelTooltip));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowItemEffectRanges), whichOption++, _showScarecrowAndSprinklerRange.ToggleOption, _options, OptionKeys.ShowItemEffectRanges));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowExtraItemInformation), whichOption++, _showItemHoverInformation.ToggleOption, _options, OptionKeys.ShowExtraItemInformation));
-            var travellingMerchantIcon = new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowTravelingMerchant), whichOption++, _showTravelingMerchant.ToggleOption, _options, OptionKeys.ShowTravelingMerchant);
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.HideAnimalPetOnMaxFriendship), whichOption++, _showWhenAnimalNeedsPet.ToggleDisableOnMaxFirendshipOption, _options, OptionKeys.HideAnimalPetOnMaxFriendship, animalPetIcon, ModEntry.Instance.Config.HideAnimalPetOnMaxFriendship));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.DisplayCalendarAndBillboard), whichOption++, _showCalendarAndBillboardOnGameMenuButton.ToggleOption, _options, OptionKeys.DisplayCalendarAndBillboard, null, ModEntry.Instance.Config.DisplayCalendarAndBillboard));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowCropAndBarrelTooltip), whichOption++, _showCropAndBarrelTime.ToggleOption, _options, OptionKeys.ShowCropAndBarrelTooltip, null, ModEntry.Instance.Config.ShowCropAndBarrelTooltip));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowItemEffectRanges), whichOption++, _showScarecrowAndSprinklerRange.ToggleOption, _options, OptionKeys.ShowItemEffectRanges, null, ModEntry.Instance.Config.ShowItemEffectRanges));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowExtraItemInformation), whichOption++, _showItemHoverInformation.ToggleOption, _options, OptionKeys.ShowExtraItemInformation, null, ModEntry.Instance.Config.ShowExtraItemInformation));
+            var travellingMerchantIcon = new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowTravelingMerchant), whichOption++, _showTravelingMerchant.ToggleOption, _options, OptionKeys.ShowTravelingMerchant, null, ModEntry.Instance.Config.ShowTravelingMerchant);
             _optionsElements.Add(travellingMerchantIcon);
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.HideMerchantWhenVisited), whichOption++, _showTravelingMerchant.ToggleHideWhenVisitedOption, _options, OptionKeys.HideMerchantWhenVisited, travellingMerchantIcon, false));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowRainyDay), whichOption++, _showRainyDayIcon.ToggleOption, _options, OptionKeys.ShowRainyDay));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowHarvestPricesInShop), whichOption++, _shopHarvestPrices.ToggleOption, _options, OptionKeys.ShowHarvestPricesInShop));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowWhenNewRecipesAreAvailable), whichOption++, _showQueenOfSauceIcon.ToggleOption, _options, OptionKeys.ShowWhenNewRecipesAreAvailable));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowToolUpgradeStatus), whichOption++, _showToolUpgradeStatus.ToggleOption, _options, OptionKeys.ShowToolUpgradeStatus));
-            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowRobinBuildingStatusIcon), whichOption++, _showRobinBuildingStatusIcon.ToggleOption, _options, OptionKeys.ShowRobinBuildingStatusIcon));
-
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.HideMerchantWhenVisited), whichOption++, _showTravelingMerchant.ToggleHideWhenVisitedOption, _options, OptionKeys.HideMerchantWhenVisited, travellingMerchantIcon, ModEntry.Instance.Config.HideMerchantWhenVisited));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowRainyDay), whichOption++, _showRainyDayIcon.ToggleOption, _options, OptionKeys.ShowRainyDay, null, ModEntry.Instance.Config.ShowRainyDay));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowHarvestPricesInShop), whichOption++, _shopHarvestPrices.ToggleOption, _options, OptionKeys.ShowHarvestPricesInShop, null, ModEntry.Instance.Config.ShowHarvestPricesInShop));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowWhenNewRecipesAreAvailable), whichOption++, _showQueenOfSauceIcon.ToggleOption, _options, OptionKeys.ShowWhenNewRecipesAreAvailable, null, ModEntry.Instance.Config.ShowWhenNewRecipesAreAvailable));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowToolUpgradeStatus), whichOption++, _showToolUpgradeStatus.ToggleOption, _options, OptionKeys.ShowToolUpgradeStatus, null, ModEntry.Instance.Config.ShowToolUpgradeStatus));
+            _optionsElements.Add(new ModOptionsCheckbox(_helper.SafeGetString(OptionKeys.ShowRobinBuildingStatusIcon), whichOption++, _showRobinBuildingStatusIcon.ToggleOption, _options, OptionKeys.ShowRobinBuildingStatusIcon, null, ModEntry.Instance.Config.ShowRobinBuildingStatusIcon));
         }
-
 
         public void Dispose()
         {

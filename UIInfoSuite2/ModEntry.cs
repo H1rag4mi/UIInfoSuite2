@@ -8,6 +8,10 @@ using System.Xml;
 using UIInfoSuite.AdditionalFeatures;
 using UIInfoSuite.Infrastructure;
 using UIInfoSuite.Options;
+using UIInfoSuite2;
+using UIInfoSuite2.Options;
+using UIInfoSuite.Infrastructure.Extensions;
+using System.Reflection;
 
 namespace UIInfoSuite
 {
@@ -22,18 +26,23 @@ namespace UIInfoSuite
         private readonly Dictionary<string, string> _options = new Dictionary<string, string>();
 
         private ModOptionsPageHandler _modOptionsPageHandler;
+
+        internal static ModEntry Instance;
+        internal ModConfig Config;
         #endregion
 
 
         #region Entry
         public override void Entry(IModHelper helper)
         {
+            Instance = this;
             MonitorObject = Monitor;
             _skipIntro = new SkipIntro(helper.Events);
 
             helper.Events.GameLoop.ReturnedToTitle += OnReturnedToTitle;
             helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
             helper.Events.GameLoop.Saved += OnSaved;
+            helper.Events.GameLoop.GameLaunched += OnLaunched;
 
             helper.Events.Display.Rendering += IconHandler.Handler.Reset;
         }
@@ -121,7 +130,33 @@ namespace UIInfoSuite
                     writer.WriteEndElement();
                 }
             }
-        } 
+        }
+
+        private void OnLaunched(object sender, EventArgs e)
+        {
+            try
+            {
+                Config = Helper.ReadConfig<ModConfig>(); //attempt to load (or create) config.json
+            }
+            catch (Exception ex)
+            {
+                Monitor.Log($"Encountered an error while loading the config.json file. Default settings will be used instead. Full error message:\n-----\n{ex.ToString()}", LogLevel.Error);
+                Config = new ModConfig(); //use the default settings
+            }
+
+            var api = Helper.ModRegistry.GetApi<GenericModConfigMenuInterface>("spacechase0.GenericModConfigMenu");
+            if (api == null)
+                return;
+            api.RegisterModConfig(ModManifest, () => Config = new ModConfig(), () => Helper.WriteConfig(Config));
+            foreach (PropertyInfo property in Config.GetType().GetProperties())
+            {
+                api.RegisterSimpleOption(ModManifest,
+                    optionName: property.Name,
+                    optionDesc: Helper.SafeGetString(property.Name.ToLower()),
+                    optionGet: () => (bool)property.GetValue(Config),
+                    optionSet: (bool value) => property.SetValue(Config, value));
+            }
+        }
         #endregion
 
     }

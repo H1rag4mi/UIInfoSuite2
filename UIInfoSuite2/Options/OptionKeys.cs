@@ -12,13 +12,11 @@
         public const string ShowLuckIcon = "ShowLuckIcon";
         public const string ShowTravelingMerchant = "ShowTravelingMerchant";
         public const string ShowRainyDay = "ShowRainyDay";
-        public const string ShowLocationOfTownsPeopleShowQuestIcon = "ShowLocationOfTownsPeopleShowQuestIcon";
         public const string ShowCropAndBarrelTooltip = "ShowCropAndBarrelTooltip";
         public const string ShowBirthdayIcon = "ShowBirthdayIcon";
         public const string ShowAnimalsNeedPets = "ShowAnimalsNeedPets";
         public const string HideAnimalPetOnMaxFriendship = "HideAnimalPetOnMaxFriendship";
         public const string ShowItemEffectRanges = "ShowItemEffectRanges";
-        public const string ShowItemsRequiredForBundles = "ShowItemsRequiredForBundles";
         public const string ShowHarvestPricesInShop = "ShowHarvestPricesInShop";
         public const string DisplayCalendarAndBillboard = "DisplayCalendarAndBillboard";
         public const string ShowWhenNewRecipesAreAvailable = "ShowWhenNewRecipesAreAvailable";
